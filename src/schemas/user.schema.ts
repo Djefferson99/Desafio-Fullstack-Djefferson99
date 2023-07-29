@@ -4,7 +4,7 @@ const userSchema  = z.object ({
     id: z.number(),
     name:z.string().max(45),
     email: z.string().email().max(45),
-    telefone:z.number(),
+    telefone:z.string().max(10),
     createdAt:z.string(),
 })
 

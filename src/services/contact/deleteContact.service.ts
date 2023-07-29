@@ -10,7 +10,7 @@ const deleteContactService = async (contactId: number): Promise<void> => {
         id: contactId,
     })
 
-    await contactRepository.softRemove(contact!)
+    await contactRepository.remove(contact!)
 }
 
 export default deleteContactService

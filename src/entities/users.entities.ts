@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from 'typeorm'
+import { Contact } from './contact.entities'
 
 @Entity('users')
 
@@ -15,12 +16,15 @@ class User {
     @Column({type: 'varchar', length: 45, unique: true})
     email: string
 
-    @Column({type: 'integer'})
-    telefone: number
+    @Column({length: 10 })
+    telefone: string
+
 
     @CreateDateColumn({type: 'date'})
     createdAt: string 
 
+    @OneToMany(() => Contact, contact => contact.user)
+    contacts: Contact[]
 }
 
 export {User}
