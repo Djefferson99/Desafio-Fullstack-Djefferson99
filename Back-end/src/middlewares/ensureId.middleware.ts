@@ -16,7 +16,7 @@ const ensureIdMiddleware = async (req: Request, res: Response, next: NextFunctio
     })
 
     if (!user) {
-        throw new AppError('User notafound', 404)
+        throw new AppError('User not a found', 404)
     }
     return next()
 }

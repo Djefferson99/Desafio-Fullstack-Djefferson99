@@ -1,14 +1,14 @@
 import {  Repository } from "typeorm"
-import { TUser, TUserRequestUpdate } from "../../interfaces/user.interface"
 import { AppDataSource } from "../../data-source"
-import { userSchema } from "../../schemas/user.schema"
 import { Contact } from "../../entities/contact.entities"
+import { TContact, TContactRequestUpdate } from "../../interfaces/contact.interfaces"
+import { contactSchema } from "../../schemas/contact.schema"
 
 
 const updateContactService = async (
-    contactData: TUserRequestUpdate,
+    contactData: TContactRequestUpdate,
     contactId: number
-): Promise<TUser> => {
+): Promise<TContact> => {
     
     const contactRepository: Repository<Contact> = AppDataSource.getRepository(Contact)
 
@@ -25,7 +25,7 @@ const updateContactService = async (
 
     await contactRepository.save(newContactData)
 
-    const returnContact: TUser = userSchema.parse(newContactData)
+    const returnContact: TContact = contactSchema.parse(newContactData)
 
     return returnContact
 }

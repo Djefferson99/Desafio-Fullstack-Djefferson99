@@ -17,14 +17,16 @@ class Contact {
     email: string
 
 
-    @Column({length: 10 })
+    @Column({length: 11 })
     telefone: string
 
 
     @CreateDateColumn({type: 'date'})
     createdAt: string 
 
-    
+    @Column({type:'integer' })
+    userId: number
+
     @ManyToOne(() => User, user => user.contacts, {onDelete: 'CASCADE'})
     user: User
 }
